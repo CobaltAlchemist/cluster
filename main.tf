@@ -19,9 +19,8 @@ resource "proxmox_vm_qemu" "k3s" {
     }
 
     count       = each.value.count
-    name        = format("%s-%d", each.value.name, count.index)
+    name        = each.value.name
     target_node = each.value.target_node
-    desc        = each.value.desc
 
   # Define common configurations like network settings, disk size, etc.
     os_type     = "cloud-init"
