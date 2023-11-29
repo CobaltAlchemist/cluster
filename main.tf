@@ -18,7 +18,6 @@ resource "proxmox_vm_qemu" "k3s" {
         for vm in vars.k3svms : vm.name => vm 
     }
 
-    count       = each.value.count
     name        = each.value.name
     target_node = each.value.target_node
 
