@@ -50,19 +50,3 @@ resource "proxmox_vm_qemu" "k3s" {
         ]
     }
 }
-
-module "k3s_bertha_worker_1" {
-  source      = "./k3sworker-module"
-  count = 1
-  vm_name     = format("k3s-marie-worker-%d", count.index)
-  target_node = "marie"
-}
-
-module "k3s_bertha_worker_2" {
-  source      = "./k3sworker-module"
-  count = 1
-vm_name     = format("k3s-bertha-worker-%d", count.index)
-  target_node = "bertha"
-}
-
-# Repeat for other worker nodes on different Proxmox nodes
