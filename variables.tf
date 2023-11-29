@@ -32,7 +32,12 @@ variable "worker_vm_ram" {
   default     = 4096
 }
 
-variable "vm_count" {
-  description = "Number of worker VMs to create"
-  default     = 2
+variable "k3s_workers" {
+  description = "List of k3s worker VM configurations"
+  type = list(object({
+    name        = string
+    target_node = string
+    # Add other necessary attributes like cores, memory, etc.
+  }))
+  default = []
 }
