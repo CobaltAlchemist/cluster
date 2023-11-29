@@ -26,8 +26,8 @@ resource "proxmox_vm_qemu" "k3s" {
     clone       = "ubuntu-22.04-server-cloudimg-amd64"
     full_clone  = true
 
-    cores        = 2  # Set default core count
-    memory       = 4096  # Set default memory size in MB
+    cores        = var.worker_vm_cpu  # Set default core count
+    memory       = var.worker_vm_ram  # Set default memory size in MB
     agent        = 1
     disk {
         size = "20G"
